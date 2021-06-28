@@ -9,19 +9,20 @@ const io = socketIo(server, {
 const array_id = []
  
 io.on('connection', (socket) => {
-  console.log('connected')
-  console.log(socket.id)
- /* if (array_id.length >= 2) {
+  console.log('connected: ' + socket.id)
+  if (array_id.length >= 2) {
      console.log("Чат переполнен!")
+     io.emit('connected', "ЧАТ ПЕРЕПОЛНЕН, УХОДИТЕ!")
   } else  {
      array_id.push(socket.id)
-  }*/
+     io.emit('connected', socket.id)
+  }
   socket.on('message', (data) => {
     console.log('message: ', data)
     
-    setTimeout(() => {
+   
       io.emit('message', [data, socket.id])
-    }, 1000)
+    
   })
 })
 

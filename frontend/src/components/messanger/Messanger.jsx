@@ -3,33 +3,11 @@ import s from './Messanger.module.scss';
 import HeaderMessage from './header-message';
 import FooterMessange from './footer-messange';
 import Communication from './communication';
-import {io} from 'socket.io-client';
-const socket = io('http://localhost:3001');
 
 const Messanger = () => {
 
    const [messages, setMessages] = useState([]);
-
-   useEffect(() => {
-      setMessages([
-         {
-            id: 2,
-            id_author: 1,
-            date: '23.06.2021',
-            time: '15:53',
-            author: 'Мессенджер',
-            message: 'За помощью обратитесь в тех.поддержу!'
-         },
-         {
-            id: 1, //id сообщения
-            id_author: 1,
-            date: '23.06.2021',
-            time: '15:52', //id автора сообщения
-            author: 'Мессенджер',
-            message: 'Добро пожаловать в новый чат!'
-         }
-      ])
-   }, [])
+   const [acc, setAcc] = useState([]);
 
   
    const addMessage = (message) => {
@@ -53,8 +31,8 @@ const Messanger = () => {
    return(
       <div className={s.main}>
          <HeaderMessage />
-         <Communication messages={messages}/>
-         <FooterMessange addMessage={addMessage}/>
+         <Communication messages={messages} acc={acc}/>
+         <FooterMessange addMessage={addMessage} setAcc={setAcc}/>
       </div>
    )
 }

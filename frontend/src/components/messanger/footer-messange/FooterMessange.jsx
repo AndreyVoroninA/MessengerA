@@ -5,13 +5,17 @@ import smile from './../../../img/smile.png';
 import {io} from 'socket.io-client';
 const socket = io('http://localhost:3001');
 
-const FooterMessange = ({addMessage}) => {
+const FooterMessange = ({addMessage, setAcc}) => {
 
    const [print, setPrint] = useState("");
 
+   
+
    useEffect(() => {
+
       socket.on('connected', (data) => {
-         console.log('handle connected: ', data)
+          console.log('handle connected: ', data)
+          setAcc((prev) => [...prev, data])
       })
 
       socket.on('message', (data) => {
@@ -29,7 +33,7 @@ const FooterMessange = ({addMessage}) => {
       e.preventDefault();
       //addMessage(print);
       socket.emit('message', print)
-      
+      console.log(socket.id)
        setPrint("");
      
    }
