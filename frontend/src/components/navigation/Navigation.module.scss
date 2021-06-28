@@ -1,0 +1,31 @@
+.header {
+   grid-area: na;
+   display: flex;
+   align-items: center;
+   background-color: rgb(233, 233, 233);
+   width: 100%;
+   
+   ul {
+      display: flex;
+      list-style: none;
+      margin: -10px;
+      .item{
+         margin: 23px;
+         &:hover {
+            background-color: rgb(241, 239, 239);
+         }
+         a {
+            text-decoration: none;
+            img{
+               width: 30px;
+               height: 30px;
+               margin: 0px 8px;
+            }
+            div {
+               font-size: 11px;
+               color: black;
+            }
+         }
+      }
+   }
+}

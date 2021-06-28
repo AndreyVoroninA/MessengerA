@@ -1,0 +1,17 @@
+.messages {
+   grid-area: mes;
+   width: 100%;
+   overflow: auto;
+   display: flex;
+   flex-direction: column-reverse;
+}
+.messages::-webkit-scrollbar {
+   width: 4px;              
+ }
+ .messages::-webkit-scrollbar-track {
+   background: rgb(224, 224, 224);    
+ }
+ .messages::-webkit-scrollbar-thumb {
+   background-color: rgb(165, 164, 164);
+   border-radius: 20px; 
+ }

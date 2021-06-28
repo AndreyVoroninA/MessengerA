@@ -1,0 +1,16 @@
+.list {
+   grid-area: li;
+   height: 100%;
+   overflow: auto;
+}
+
+.list::-webkit-scrollbar {
+   width: 4px;              
+ }
+ .list::-webkit-scrollbar-track {
+   background: rgb(224, 224, 224);    
+ }
+ .list::-webkit-scrollbar-thumb {
+   background-color: rgb(165, 164, 164);
+   border-radius: 20px; 
+ }

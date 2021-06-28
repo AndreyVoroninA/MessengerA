@@ -1,0 +1,10 @@
+.aside {
+   grid-area: a;
+   background-color: #fff;
+   display: grid;
+   grid-template-rows: 80px 1fr 60px;
+   grid-template-areas:
+   "fi"
+   "li"
+   "na";
+}

@@ -1,0 +1,13 @@
+.main {
+   grid-area: m;
+   background-image: url('./../../img/background2.jpg');
+   background-size: cover;
+   background-color:rgba(0,0,0,.7);
+   background-repeat: no-repeat;
+   display: grid;
+   grid-template-rows: 50px 1fr 60px;
+   grid-template-areas: 
+   'hm'
+   'mes'
+   'field';
+}

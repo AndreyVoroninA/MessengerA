@@ -1,0 +1,35 @@
+.field {
+   background-color: white;
+   grid-area: field;
+   padding: 15px;
+  
+   .form {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      img {
+         width: 30px;
+         height: 30px;
+      }
+      input {
+         height: 25px;
+         width: 75%;
+         border: 1px solid rgb(90, 161, 194);
+         background-color: rgb(252, 247, 247);
+         border-radius: 7px;
+         outline: none;
+      }
+      button {
+         width: 100px;
+         height: 30px;
+         background-color: rgb(79, 159, 230);
+         color: white;
+         border: 1px solid rgb(79, 159, 230);
+         border-radius: 7px;
+         &:hover {
+            color:rgb(79, 159, 230);
+            background-color:white;
+         }
+      }
+   }
+}

@@ -1,0 +1,10 @@
+.app {
+   display: grid;
+   width: 100vw;
+   height: 100vh;
+   grid-template-columns: 350px 1fr;
+   grid-template-rows: 1fr 60px;
+   grid-template-areas:
+   'a m'
+   'a m';
+}

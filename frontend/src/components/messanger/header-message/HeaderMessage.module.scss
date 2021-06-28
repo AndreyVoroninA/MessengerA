@@ -1,0 +1,35 @@
+.header {
+   width: 100%;
+   background-color: rgb(255, 255, 255);
+   display: flex;
+   grid-area: hm;
+   justify-content: space-between;
+   margin: 0px;
+   .des {
+      margin: 10px 15px;
+      .name_dialog {
+         color: rgb(85, 84, 84);
+      }
+      .number {
+         font-size: 13px;
+         color: rgb(114, 113, 113);
+      }
+   }
+   .nav{
+      display: flex;
+      margin: auto 30px;
+      input {
+         width: 300px;
+         height: 25px;
+         margin: 10px 50px;
+         border: 1px solid rgb(51, 86, 116);
+         border-radius: 7px;
+         outline: none;
+      }
+      img {
+         width: 25px;
+         height: 25px;
+         margin: 10px 15px;
+      }
+   }
+}
