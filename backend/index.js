@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
     console.log('message: ', data)
     
     setTimeout(() => {
-      io.emit('message', data)
+      io.emit('message', [data, socket.id])
     }, 1000)
   })
 })
