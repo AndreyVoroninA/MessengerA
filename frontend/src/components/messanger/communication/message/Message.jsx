@@ -4,7 +4,7 @@ import ava from './../../../../img/initava.jpg';
 //import {io} from 'socket.io-client';
 //const socket = io('http://localhost:3001');
 
-const Message = ({id, author, message, date, time, acc}) => {
+const Message = ({id, author, message, date, time, acc, too}) => {
    
    return(
 
@@ -26,7 +26,7 @@ const Message = ({id, author, message, date, time, acc}) => {
             <p className={s.mes}>{message}</p>
             </div>
          </div>
-         
+        
    )
 }
 

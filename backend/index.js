@@ -11,8 +11,8 @@ const array_id = []
 io.on('connection', (socket) => {
   console.log('connected: ' + socket.id)
   if (array_id.length >= 2) {
-     console.log("Чат переполнен!")
-     io.emit('connected', "ЧАТ ПЕРЕПОЛНЕН, УХОДИТЕ!")
+     console.log("ЧАТ CЛОМАЛСЯ :( ЗАШЛО МНОГО ЛЮДЕЙ, ПЕРЕЗАПУСТИТЕ BACK и FRONT!")
+     io.emit('connected', "ЧАТ CЛОМАЛСЯ :( ЗАШЛО МНОГО ЛЮДЕЙ, ПЕРЕЗАПУСТИТЕ BACK и FRONT!")
   } else  {
      array_id.push(socket.id)
      io.emit('connected', socket.id)
@@ -23,6 +23,9 @@ io.on('connection', (socket) => {
    
       io.emit('message', [data, socket.id])
     
+  })
+  socket.on('tooo', (data) => {
+        socket.broadcast.emit('tooo', data)
   })
 })
 

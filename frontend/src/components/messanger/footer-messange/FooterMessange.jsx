@@ -5,7 +5,7 @@ import smile from './../../../img/smile.png';
 import {io} from 'socket.io-client';
 const socket = io('http://localhost:3001');
 
-const FooterMessange = ({addMessage, setAcc}) => {
+const FooterMessange = ({addMessage, setAcc, setToo}) => {
 
    const [print, setPrint] = useState("");
 
@@ -27,6 +27,15 @@ const FooterMessange = ({addMessage, setAcc}) => {
 
    const changeMessage = (e) => {
       setPrint(e.currentTarget.value)
+      socket.emit('tooo', "Набирает сообщение.....")
+      socket.on('tooo', (data) => {
+        setToo(true)
+        console.log(data)
+        setTimeout(()=> {
+         setToo(false)
+        }, 1000)
+     })
+     
    }
 
    const tapingMessage = (e) => {

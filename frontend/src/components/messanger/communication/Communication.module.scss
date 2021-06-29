@@ -4,6 +4,14 @@
    overflow: auto;
    display: flex;
    flex-direction: column-reverse;
+   .tooo {
+     color: rgb(226, 223, 223);
+     font-weight: 800px;
+     position: absolute;
+     margin: 3px;
+     bottom: 60px;
+     font-size: 18x;
+   }
 }
 .messages::-webkit-scrollbar {
    width: 4px;              

@@ -8,6 +8,7 @@ const Messanger = () => {
 
    const [messages, setMessages] = useState([]);
    const [acc, setAcc] = useState([]);
+   const[too, setToo] = useState(false)
 
   
    const addMessage = (message) => {
@@ -31,8 +32,8 @@ const Messanger = () => {
    return(
       <div className={s.main}>
          <HeaderMessage />
-         <Communication messages={messages} acc={acc}/>
-         <FooterMessange addMessage={addMessage} setAcc={setAcc}/>
+         <Communication messages={messages} acc={acc} too={too}/>
+         <FooterMessange addMessage={addMessage} setAcc={setAcc} setToo={setToo}/>
       </div>
    )
 }
