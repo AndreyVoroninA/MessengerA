@@ -1,4 +1,5 @@
 const http = require('http')
+const { disconnect } = require('process')
 const socketIo = require('socket.io')
 
 const server = http.createServer()
@@ -6,15 +7,16 @@ const server = http.createServer()
 const io = socketIo(server, {
   cors: '*'
 })
-const array_id = []
+let numId = 0;
  
 io.on('connection', (socket) => {
   console.log('connected: ' + socket.id)
-  if (array_id.length >= 2) {
-     console.log("ЧАТ CЛОМАЛСЯ :( ЗАШЛО МНОГО ЛЮДЕЙ, ПЕРЕЗАПУСТИТЕ BACK и FRONT!")
-     io.emit('connected', "ЧАТ CЛОМАЛСЯ :( ЗАШЛО МНОГО ЛЮДЕЙ, ПЕРЕЗАПУСТИТЕ BACK и FRONT!")
+  if (numId >= 2) {
+     console.log("Чат переполнен... :( !")
+     io.emit('overflow', socket.id)
+     socket.disconnect();
   } else  {
-     array_id.push(socket.id)
+    numId++;
      io.emit('connected', socket.id)
   }
   socket.on('message', (data) => {
@@ -26,6 +28,10 @@ io.on('connection', (socket) => {
   })
   socket.on('tooo', (data) => {
         socket.broadcast.emit('tooo', data)
+  })
+  socket.on('disconnect', (data) => {
+    console.log('disconnect')
+    numId--;
   })
 })
 

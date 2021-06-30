@@ -9,6 +9,7 @@ const FooterMessange = ({addMessage, setAcc, setToo}) => {
 
    const [print, setPrint] = useState("");
 
+   const [overflow, setOverflow] = useState("");
    
 
    useEffect(() => {
@@ -16,12 +17,24 @@ const FooterMessange = ({addMessage, setAcc, setToo}) => {
       socket.on('connected', (data) => {
           console.log('handle connected: ', data)
           setAcc((prev) => [...prev, data])
+          setOverflow("Напишите сообщение...")
       })
 
       socket.on('message', (data) => {
          console.log('message: ', data)
          addMessage(data)
        })
+
+        socket.on('overflow', (data) => {
+         if (data === socket.id) {
+            setOverflow("Чат переполнен, отправлять сообщения нельзя!")
+            console.log("Чат переполнен")
+         }
+      })
+
+       socket.on("disconnect", () => { 
+         console.log("Кто-то отключился..."); 
+     }); 
        
    }, [])
 
@@ -51,7 +64,8 @@ const FooterMessange = ({addMessage, setAcc, setToo}) => {
       <div className={s.field}>
             <form className={s.form} onSubmit={tapingMessage}>
                <img src={addFile} />
-               <input className={s.input} value={print} onChange={changeMessage} placeholder="Напишите сообщение..."/>
+               <input className={s.input} 
+               value={print} onChange={changeMessage} placeholder={overflow}/>
                <img src={smile}/>
                <button>Отправить</button>
             </form>

@@ -17,7 +17,7 @@ const Message = ({id, author, message, date, time, acc, too}) => {
             <p className={s.mes}>{message}</p>
             </div>
          </div>
-            : 
+             :  
             <div className={s.message}>
             <img className={s.photo} src={ava}/>
             <div className={s.field_message}>
