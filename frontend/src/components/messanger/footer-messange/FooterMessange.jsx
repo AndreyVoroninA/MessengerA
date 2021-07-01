@@ -36,18 +36,38 @@ const FooterMessange = ({addMessage, setAcc, setToo}) => {
          console.log("Кто-то отключился..."); 
      }); 
        
+     socket.on('tooo', (data) => {
+      setToo(true)
+      setTimeout(()=> {
+       setToo(false)
+      }, 1000)})
+
    }, [])
+
+   const debounce = (callback, delay) => {
+      let timeout;
+      return function (...args) {
+
+         clearTimeout(timeout)
+         timeout = setTimeout(() => {
+            callback.applay(this, args)
+         }, delay)
+        
+      }
+   }
 
    const changeMessage = (e) => {
       setPrint(e.currentTarget.value)
-      socket.emit('tooo', "Набирает сообщение.....")
-      socket.on('tooo', (data) => {
+      /*debounce(function (){
+         socket.emit('tooo', "Набирает сообщение.....")
+      }, 1000)*/
+     socket.emit('tooo', "Набирает сообщение.....")
+     /* socket.on('tooo', (data) => {
         setToo(true)
         setTimeout(()=> {
          setToo(false)
         }, 1000)
-     })
-     
+     })*/
    }
 
    const tapingMessage = (e) => {
