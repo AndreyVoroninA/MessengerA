@@ -29,6 +29,9 @@ io.on('connection', (socket) => {
   socket.on('tooo', (data) => {
         socket.broadcast.emit('tooo', data)
   })
+  socket.on('end', (data) => {
+    socket.broadcast.emit('end', data)
+})
   socket.on('disconnect', (data) => {
     console.log('disconnect')
     numId--;

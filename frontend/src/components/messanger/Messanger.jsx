@@ -33,7 +33,7 @@ const Messanger = () => {
       <div className={s.main}>
          <HeaderMessage />
          <Communication messages={messages} acc={acc} too={too}/>
-         <FooterMessange addMessage={addMessage} setAcc={setAcc} setToo={setToo}/>
+         <FooterMessange addMessage={addMessage} setAcc={setAcc} setToo={setToo} too={too}/>
       </div>
    )
 }

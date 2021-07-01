@@ -4,8 +4,9 @@ import addFile from './../../../img/add.png';
 import smile from './../../../img/smile.png';
 import {io} from 'socket.io-client';
 const socket = io('http://localhost:3001');
+let timeout; 
 
-const FooterMessange = ({addMessage, setAcc, setToo}) => {
+const FooterMessange = ({addMessage, setAcc, setToo, too}) => {
 
    const [print, setPrint] = useState("");
 
@@ -36,38 +37,29 @@ const FooterMessange = ({addMessage, setAcc, setToo}) => {
          console.log("Кто-то отключился..."); 
      }); 
        
-     socket.on('tooo', (data) => {
-      setToo(true)
-      setTimeout(()=> {
-       setToo(false)
-      }, 1000)})
+    socket.on('tooo', (data) => {
+     setToo(true)
+   })
+   socket.on('end', (data) => {
+      setToo(false)
+   })
 
    }, [])
 
-   const debounce = (callback, delay) => {
-      let timeout;
-      return function (...args) {
-
-         clearTimeout(timeout)
-         timeout = setTimeout(() => {
-            callback.applay(this, args)
-         }, delay)
-        
-      }
-   }
+   
 
    const changeMessage = (e) => {
       setPrint(e.currentTarget.value)
-      /*debounce(function (){
-         socket.emit('tooo', "Набирает сообщение.....")
-      }, 1000)*/
-     socket.emit('tooo', "Набирает сообщение.....")
-     /* socket.on('tooo', (data) => {
-        setToo(true)
-        setTimeout(()=> {
-         setToo(false)
-        }, 1000)
-     })*/
+      if (too === false) {
+         socket.emit('tooo', "Набирает сообщение...")
+      }
+
+      if (timeout) {
+         clearTimeout(timeout)
+      }
+      timeout = setTimeout(() => {
+         socket.emit('end', "Устал печатать...")
+      }, 500)
    }
 
    const tapingMessage = (e) => {
